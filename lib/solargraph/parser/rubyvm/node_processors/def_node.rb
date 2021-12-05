@@ -53,6 +53,11 @@ module Solargraph
                 node: methpin.node
               )
             else
+              # if methpin.name == 'jump'
+                # Logging.logger.info ">>> Patching #{methpin.inspect}"
+                # methpin.instance_variable_set(:@return_type, ComplexType::VOID)
+              # end
+
               pins.push methpin
             end
             process_children region.update(closure: methpin, scope: methpin.scope)

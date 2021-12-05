@@ -143,7 +143,18 @@ module Solargraph
       # @return [ComplexType]
       def generate_complex_type
         tags = docstring.tags(:return).map(&:types).flatten.reject(&:nil?)
+
+        # THIS IS NOT CORRECT; ONLY A FEW METHODS ARE TRIGGERED.
+        #
+        # if tags.empty?
+          Logging.logger.info ">>> No tags: #{self.inspect}"
+          # Logging.logger.info ">>> Forcing return void for #{self.inspect}"
+          # return ComplexType::VOID
+        # else
+          # puts ">>>T #{tags.inspect}"
+        # end
         return ComplexType::UNDEFINED if tags.empty?
+
         ComplexType.try_parse *tags
       end
 
