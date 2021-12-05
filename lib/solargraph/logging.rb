@@ -12,7 +12,7 @@ module Solargraph
       'debug' => Logger::DEBUG
     }
 
-    @@logger = Logger.new(STDERR, level: DEFAULT_LOG_LEVEL)
+    @@logger = Logger.new('/tmp/solargraph.log', level: DEFAULT_LOG_LEVEL)
     @@logger.formatter = proc do |severity, datetime, progname, msg|
       "[#{severity}] #{msg}\n"
     end
